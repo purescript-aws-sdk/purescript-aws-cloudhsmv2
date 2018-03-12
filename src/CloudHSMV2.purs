@@ -20,57 +20,75 @@ import Data.StrMap as StrMap
 import AWS.Request as Request
 import AWS.Request.Types as Types
 
-serviceName = "CloudHSMV2" :: String
-
 
 -- | <p>Creates a new AWS CloudHSM cluster.</p>
 createCluster :: forall eff. CreateClusterRequest -> Aff (exception :: EXCEPTION | eff) CreateClusterResponse
-createCluster = Request.request serviceName "createCluster" 
+createCluster = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "createCluster"
 
 
 -- | <p>Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.</p>
 createHsm :: forall eff. CreateHsmRequest -> Aff (exception :: EXCEPTION | eff) CreateHsmResponse
-createHsm = Request.request serviceName "createHsm" 
+createHsm = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "createHsm"
 
 
 -- | <p>Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use <a>DescribeClusters</a>. To delete an HSM, use <a>DeleteHsm</a>.</p>
 deleteCluster :: forall eff. DeleteClusterRequest -> Aff (exception :: EXCEPTION | eff) DeleteClusterResponse
-deleteCluster = Request.request serviceName "deleteCluster" 
+deleteCluster = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "deleteCluster"
 
 
 -- | <p>Deletes the specified HSM. To specify an HSM, you can use its identifier (ID), the IP address of the HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of these values. To find these values, use <a>DescribeClusters</a>.</p>
 deleteHsm :: forall eff. DeleteHsmRequest -> Aff (exception :: EXCEPTION | eff) DeleteHsmResponse
-deleteHsm = Request.request serviceName "deleteHsm" 
+deleteHsm = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "deleteHsm"
 
 
 -- | <p>Gets information about backups of AWS CloudHSM clusters.</p> <p>This is a paginated operation, which means that each response might contain only a subset of all the backups. When the response contains only a subset of backups, it includes a <code>NextToken</code> value. Use this value in a subsequent <code>DescribeBackups</code> request to get more backups. When you receive a response with no <code>NextToken</code> (or an empty or null value), that means there are no more backups to get.</p>
 describeBackups :: forall eff. DescribeBackupsRequest -> Aff (exception :: EXCEPTION | eff) DescribeBackupsResponse
-describeBackups = Request.request serviceName "describeBackups" 
+describeBackups = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "describeBackups"
 
 
 -- | <p>Gets information about AWS CloudHSM clusters.</p> <p>This is a paginated operation, which means that each response might contain only a subset of all the clusters. When the response contains only a subset of clusters, it includes a <code>NextToken</code> value. Use this value in a subsequent <code>DescribeClusters</code> request to get more clusters. When you receive a response with no <code>NextToken</code> (or an empty or null value), that means there are no more clusters to get.</p>
 describeClusters :: forall eff. DescribeClustersRequest -> Aff (exception :: EXCEPTION | eff) DescribeClustersResponse
-describeClusters = Request.request serviceName "describeClusters" 
+describeClusters = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "describeClusters"
 
 
 -- | <p>Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use <a>DescribeClusters</a>.</p>
 initializeCluster :: forall eff. InitializeClusterRequest -> Aff (exception :: EXCEPTION | eff) InitializeClusterResponse
-initializeCluster = Request.request serviceName "initializeCluster" 
+initializeCluster = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "initializeCluster"
 
 
 -- | <p>Gets a list of tags for the specified AWS CloudHSM cluster.</p> <p>This is a paginated operation, which means that each response might contain only a subset of all the tags. When the response contains only a subset of tags, it includes a <code>NextToken</code> value. Use this value in a subsequent <code>ListTags</code> request to get more tags. When you receive a response with no <code>NextToken</code> (or an empty or null value), that means there are no more tags to get.</p>
 listTags :: forall eff. ListTagsRequest -> Aff (exception :: EXCEPTION | eff) ListTagsResponse
-listTags = Request.request serviceName "listTags" 
+listTags = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "listTags"
 
 
 -- | <p>Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.</p>
 tagResource :: forall eff. TagResourceRequest -> Aff (exception :: EXCEPTION | eff) TagResourceResponse
-tagResource = Request.request serviceName "tagResource" 
+tagResource = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "tagResource"
 
 
 -- | <p>Removes the specified tag or tags from the specified AWS CloudHSM cluster.</p>
 untagResource :: forall eff. UntagResourceRequest -> Aff (exception :: EXCEPTION | eff) UntagResourceResponse
-untagResource = Request.request serviceName "untagResource" 
+untagResource = Request.request service method  where
+    service = Request.ServiceName "CloudHSMV2"
+    method = Request.MethodName "untagResource"
 
 
 -- | <p>Contains information about a backup of an AWS CloudHSM cluster.</p>
