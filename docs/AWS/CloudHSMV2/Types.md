@@ -10,7 +10,7 @@ options :: Options
 
 ``` purescript
 newtype Backup
-  = Backup { "BackupId" :: BackupId, "BackupState" :: NullOrUndefined (BackupState), "ClusterId" :: NullOrUndefined (ClusterId), "CreateTimestamp" :: NullOrUndefined (Timestamp) }
+  = Backup { "BackupId" :: BackupId, "BackupState" :: Maybe (BackupState), "ClusterId" :: Maybe (ClusterId), "CreateTimestamp" :: Maybe (Timestamp) }
 ```
 
 <p>Contains information about a backup of an AWS CloudHSM cluster.</p>
@@ -35,7 +35,7 @@ Constructs Backup from required parameters
 #### `newBackup'`
 
 ``` purescript
-newBackup' :: BackupId -> ({ "BackupId" :: BackupId, "BackupState" :: NullOrUndefined (BackupState), "ClusterId" :: NullOrUndefined (ClusterId), "CreateTimestamp" :: NullOrUndefined (Timestamp) } -> { "BackupId" :: BackupId, "BackupState" :: NullOrUndefined (BackupState), "ClusterId" :: NullOrUndefined (ClusterId), "CreateTimestamp" :: NullOrUndefined (Timestamp) }) -> Backup
+newBackup' :: BackupId -> ({ "BackupId" :: BackupId, "BackupState" :: Maybe (BackupState), "ClusterId" :: Maybe (ClusterId), "CreateTimestamp" :: Maybe (Timestamp) } -> { "BackupId" :: BackupId, "BackupState" :: Maybe (BackupState), "ClusterId" :: Maybe (ClusterId), "CreateTimestamp" :: Maybe (Timestamp) }) -> Backup
 ```
 
 Constructs Backup's fields from required parameters
@@ -124,7 +124,7 @@ Encode Cert
 
 ``` purescript
 newtype Certificates
-  = Certificates { "ClusterCsr" :: NullOrUndefined (Cert), "HsmCertificate" :: NullOrUndefined (Cert), "AwsHardwareCertificate" :: NullOrUndefined (Cert), "ManufacturerHardwareCertificate" :: NullOrUndefined (Cert), "ClusterCertificate" :: NullOrUndefined (Cert) }
+  = Certificates { "ClusterCsr" :: Maybe (Cert), "HsmCertificate" :: Maybe (Cert), "AwsHardwareCertificate" :: Maybe (Cert), "ManufacturerHardwareCertificate" :: Maybe (Cert), "ClusterCertificate" :: Maybe (Cert) }
 ```
 
 <p>Contains one or more certificates or a certificate signing request (CSR).</p>
@@ -149,7 +149,7 @@ Constructs Certificates from required parameters
 #### `newCertificates'`
 
 ``` purescript
-newCertificates' :: ({ "ClusterCsr" :: NullOrUndefined (Cert), "HsmCertificate" :: NullOrUndefined (Cert), "AwsHardwareCertificate" :: NullOrUndefined (Cert), "ManufacturerHardwareCertificate" :: NullOrUndefined (Cert), "ClusterCertificate" :: NullOrUndefined (Cert) } -> { "ClusterCsr" :: NullOrUndefined (Cert), "HsmCertificate" :: NullOrUndefined (Cert), "AwsHardwareCertificate" :: NullOrUndefined (Cert), "ManufacturerHardwareCertificate" :: NullOrUndefined (Cert), "ClusterCertificate" :: NullOrUndefined (Cert) }) -> Certificates
+newCertificates' :: ({ "ClusterCsr" :: Maybe (Cert), "HsmCertificate" :: Maybe (Cert), "AwsHardwareCertificate" :: Maybe (Cert), "ManufacturerHardwareCertificate" :: Maybe (Cert), "ClusterCertificate" :: Maybe (Cert) } -> { "ClusterCsr" :: Maybe (Cert), "HsmCertificate" :: Maybe (Cert), "AwsHardwareCertificate" :: Maybe (Cert), "ManufacturerHardwareCertificate" :: Maybe (Cert), "ClusterCertificate" :: Maybe (Cert) }) -> Certificates
 ```
 
 Constructs Certificates's fields from required parameters
@@ -158,7 +158,7 @@ Constructs Certificates's fields from required parameters
 
 ``` purescript
 newtype CloudHsmAccessDeniedException
-  = CloudHsmAccessDeniedException { "Message" :: NullOrUndefined (ErrorMessage') }
+  = CloudHsmAccessDeniedException { "Message" :: Maybe (ErrorMessage') }
 ```
 
 <p>The request was rejected because the requester does not have permission to perform the requested operation.</p>
@@ -183,7 +183,7 @@ Constructs CloudHsmAccessDeniedException from required parameters
 #### `newCloudHsmAccessDeniedException'`
 
 ``` purescript
-newCloudHsmAccessDeniedException' :: ({ "Message" :: NullOrUndefined (ErrorMessage') } -> { "Message" :: NullOrUndefined (ErrorMessage') }) -> CloudHsmAccessDeniedException
+newCloudHsmAccessDeniedException' :: ({ "Message" :: Maybe (ErrorMessage') } -> { "Message" :: Maybe (ErrorMessage') }) -> CloudHsmAccessDeniedException
 ```
 
 Constructs CloudHsmAccessDeniedException's fields from required parameters
@@ -192,7 +192,7 @@ Constructs CloudHsmAccessDeniedException's fields from required parameters
 
 ``` purescript
 newtype CloudHsmInternalFailureException
-  = CloudHsmInternalFailureException { "Message" :: NullOrUndefined (ErrorMessage') }
+  = CloudHsmInternalFailureException { "Message" :: Maybe (ErrorMessage') }
 ```
 
 <p>The request was rejected because of an AWS CloudHSM internal failure. The request can be retried.</p>
@@ -217,7 +217,7 @@ Constructs CloudHsmInternalFailureException from required parameters
 #### `newCloudHsmInternalFailureException'`
 
 ``` purescript
-newCloudHsmInternalFailureException' :: ({ "Message" :: NullOrUndefined (ErrorMessage') } -> { "Message" :: NullOrUndefined (ErrorMessage') }) -> CloudHsmInternalFailureException
+newCloudHsmInternalFailureException' :: ({ "Message" :: Maybe (ErrorMessage') } -> { "Message" :: Maybe (ErrorMessage') }) -> CloudHsmInternalFailureException
 ```
 
 Constructs CloudHsmInternalFailureException's fields from required parameters
@@ -226,7 +226,7 @@ Constructs CloudHsmInternalFailureException's fields from required parameters
 
 ``` purescript
 newtype CloudHsmInvalidRequestException
-  = CloudHsmInvalidRequestException { "Message" :: NullOrUndefined (ErrorMessage') }
+  = CloudHsmInvalidRequestException { "Message" :: Maybe (ErrorMessage') }
 ```
 
 <p>The request was rejected because it is not a valid request.</p>
@@ -251,7 +251,7 @@ Constructs CloudHsmInvalidRequestException from required parameters
 #### `newCloudHsmInvalidRequestException'`
 
 ``` purescript
-newCloudHsmInvalidRequestException' :: ({ "Message" :: NullOrUndefined (ErrorMessage') } -> { "Message" :: NullOrUndefined (ErrorMessage') }) -> CloudHsmInvalidRequestException
+newCloudHsmInvalidRequestException' :: ({ "Message" :: Maybe (ErrorMessage') } -> { "Message" :: Maybe (ErrorMessage') }) -> CloudHsmInvalidRequestException
 ```
 
 Constructs CloudHsmInvalidRequestException's fields from required parameters
@@ -260,7 +260,7 @@ Constructs CloudHsmInvalidRequestException's fields from required parameters
 
 ``` purescript
 newtype CloudHsmResourceNotFoundException
-  = CloudHsmResourceNotFoundException { "Message" :: NullOrUndefined (ErrorMessage') }
+  = CloudHsmResourceNotFoundException { "Message" :: Maybe (ErrorMessage') }
 ```
 
 <p>The request was rejected because it refers to a resource that cannot be found.</p>
@@ -285,7 +285,7 @@ Constructs CloudHsmResourceNotFoundException from required parameters
 #### `newCloudHsmResourceNotFoundException'`
 
 ``` purescript
-newCloudHsmResourceNotFoundException' :: ({ "Message" :: NullOrUndefined (ErrorMessage') } -> { "Message" :: NullOrUndefined (ErrorMessage') }) -> CloudHsmResourceNotFoundException
+newCloudHsmResourceNotFoundException' :: ({ "Message" :: Maybe (ErrorMessage') } -> { "Message" :: Maybe (ErrorMessage') }) -> CloudHsmResourceNotFoundException
 ```
 
 Constructs CloudHsmResourceNotFoundException's fields from required parameters
@@ -294,7 +294,7 @@ Constructs CloudHsmResourceNotFoundException's fields from required parameters
 
 ``` purescript
 newtype CloudHsmServiceException
-  = CloudHsmServiceException { "Message" :: NullOrUndefined (ErrorMessage') }
+  = CloudHsmServiceException { "Message" :: Maybe (ErrorMessage') }
 ```
 
 <p>The request was rejected because an error occurred.</p>
@@ -319,7 +319,7 @@ Constructs CloudHsmServiceException from required parameters
 #### `newCloudHsmServiceException'`
 
 ``` purescript
-newCloudHsmServiceException' :: ({ "Message" :: NullOrUndefined (ErrorMessage') } -> { "Message" :: NullOrUndefined (ErrorMessage') }) -> CloudHsmServiceException
+newCloudHsmServiceException' :: ({ "Message" :: Maybe (ErrorMessage') } -> { "Message" :: Maybe (ErrorMessage') }) -> CloudHsmServiceException
 ```
 
 Constructs CloudHsmServiceException's fields from required parameters
@@ -328,7 +328,7 @@ Constructs CloudHsmServiceException's fields from required parameters
 
 ``` purescript
 newtype Cluster
-  = Cluster { "BackupPolicy" :: NullOrUndefined (BackupPolicy), "ClusterId" :: NullOrUndefined (ClusterId), "CreateTimestamp" :: NullOrUndefined (Timestamp), "Hsms" :: NullOrUndefined (Hsms), "HsmType" :: NullOrUndefined (HsmType), "PreCoPassword" :: NullOrUndefined (PreCoPassword), "SecurityGroup" :: NullOrUndefined (SecurityGroup), "SourceBackupId" :: NullOrUndefined (BackupId), "State" :: NullOrUndefined (ClusterState), "StateMessage" :: NullOrUndefined (StateMessage), "SubnetMapping" :: NullOrUndefined (ExternalSubnetMapping), "VpcId" :: NullOrUndefined (VpcId), "Certificates" :: NullOrUndefined (Certificates) }
+  = Cluster { "BackupPolicy" :: Maybe (BackupPolicy), "ClusterId" :: Maybe (ClusterId), "CreateTimestamp" :: Maybe (Timestamp), "Hsms" :: Maybe (Hsms), "HsmType" :: Maybe (HsmType), "PreCoPassword" :: Maybe (PreCoPassword), "SecurityGroup" :: Maybe (SecurityGroup), "SourceBackupId" :: Maybe (BackupId), "State" :: Maybe (ClusterState), "StateMessage" :: Maybe (StateMessage), "SubnetMapping" :: Maybe (ExternalSubnetMapping), "VpcId" :: Maybe (VpcId), "Certificates" :: Maybe (Certificates) }
 ```
 
 <p>Contains information about an AWS CloudHSM cluster.</p>
@@ -353,7 +353,7 @@ Constructs Cluster from required parameters
 #### `newCluster'`
 
 ``` purescript
-newCluster' :: ({ "BackupPolicy" :: NullOrUndefined (BackupPolicy), "ClusterId" :: NullOrUndefined (ClusterId), "CreateTimestamp" :: NullOrUndefined (Timestamp), "Hsms" :: NullOrUndefined (Hsms), "HsmType" :: NullOrUndefined (HsmType), "PreCoPassword" :: NullOrUndefined (PreCoPassword), "SecurityGroup" :: NullOrUndefined (SecurityGroup), "SourceBackupId" :: NullOrUndefined (BackupId), "State" :: NullOrUndefined (ClusterState), "StateMessage" :: NullOrUndefined (StateMessage), "SubnetMapping" :: NullOrUndefined (ExternalSubnetMapping), "VpcId" :: NullOrUndefined (VpcId), "Certificates" :: NullOrUndefined (Certificates) } -> { "BackupPolicy" :: NullOrUndefined (BackupPolicy), "ClusterId" :: NullOrUndefined (ClusterId), "CreateTimestamp" :: NullOrUndefined (Timestamp), "Hsms" :: NullOrUndefined (Hsms), "HsmType" :: NullOrUndefined (HsmType), "PreCoPassword" :: NullOrUndefined (PreCoPassword), "SecurityGroup" :: NullOrUndefined (SecurityGroup), "SourceBackupId" :: NullOrUndefined (BackupId), "State" :: NullOrUndefined (ClusterState), "StateMessage" :: NullOrUndefined (StateMessage), "SubnetMapping" :: NullOrUndefined (ExternalSubnetMapping), "VpcId" :: NullOrUndefined (VpcId), "Certificates" :: NullOrUndefined (Certificates) }) -> Cluster
+newCluster' :: ({ "BackupPolicy" :: Maybe (BackupPolicy), "ClusterId" :: Maybe (ClusterId), "CreateTimestamp" :: Maybe (Timestamp), "Hsms" :: Maybe (Hsms), "HsmType" :: Maybe (HsmType), "PreCoPassword" :: Maybe (PreCoPassword), "SecurityGroup" :: Maybe (SecurityGroup), "SourceBackupId" :: Maybe (BackupId), "State" :: Maybe (ClusterState), "StateMessage" :: Maybe (StateMessage), "SubnetMapping" :: Maybe (ExternalSubnetMapping), "VpcId" :: Maybe (VpcId), "Certificates" :: Maybe (Certificates) } -> { "BackupPolicy" :: Maybe (BackupPolicy), "ClusterId" :: Maybe (ClusterId), "CreateTimestamp" :: Maybe (Timestamp), "Hsms" :: Maybe (Hsms), "HsmType" :: Maybe (HsmType), "PreCoPassword" :: Maybe (PreCoPassword), "SecurityGroup" :: Maybe (SecurityGroup), "SourceBackupId" :: Maybe (BackupId), "State" :: Maybe (ClusterState), "StateMessage" :: Maybe (StateMessage), "SubnetMapping" :: Maybe (ExternalSubnetMapping), "VpcId" :: Maybe (VpcId), "Certificates" :: Maybe (Certificates) }) -> Cluster
 ```
 
 Constructs Cluster's fields from required parameters
@@ -410,7 +410,7 @@ Encode Clusters
 
 ``` purescript
 newtype CreateClusterRequest
-  = CreateClusterRequest { "SubnetIds" :: SubnetIds, "HsmType" :: HsmType, "SourceBackupId" :: NullOrUndefined (BackupId) }
+  = CreateClusterRequest { "SubnetIds" :: SubnetIds, "HsmType" :: HsmType, "SourceBackupId" :: Maybe (BackupId) }
 ```
 
 ##### Instances
@@ -433,7 +433,7 @@ Constructs CreateClusterRequest from required parameters
 #### `newCreateClusterRequest'`
 
 ``` purescript
-newCreateClusterRequest' :: HsmType -> SubnetIds -> ({ "SubnetIds" :: SubnetIds, "HsmType" :: HsmType, "SourceBackupId" :: NullOrUndefined (BackupId) } -> { "SubnetIds" :: SubnetIds, "HsmType" :: HsmType, "SourceBackupId" :: NullOrUndefined (BackupId) }) -> CreateClusterRequest
+newCreateClusterRequest' :: HsmType -> SubnetIds -> ({ "SubnetIds" :: SubnetIds, "HsmType" :: HsmType, "SourceBackupId" :: Maybe (BackupId) } -> { "SubnetIds" :: SubnetIds, "HsmType" :: HsmType, "SourceBackupId" :: Maybe (BackupId) }) -> CreateClusterRequest
 ```
 
 Constructs CreateClusterRequest's fields from required parameters
@@ -442,7 +442,7 @@ Constructs CreateClusterRequest's fields from required parameters
 
 ``` purescript
 newtype CreateClusterResponse
-  = CreateClusterResponse { "Cluster" :: NullOrUndefined (Cluster) }
+  = CreateClusterResponse { "Cluster" :: Maybe (Cluster) }
 ```
 
 ##### Instances
@@ -465,7 +465,7 @@ Constructs CreateClusterResponse from required parameters
 #### `newCreateClusterResponse'`
 
 ``` purescript
-newCreateClusterResponse' :: ({ "Cluster" :: NullOrUndefined (Cluster) } -> { "Cluster" :: NullOrUndefined (Cluster) }) -> CreateClusterResponse
+newCreateClusterResponse' :: ({ "Cluster" :: Maybe (Cluster) } -> { "Cluster" :: Maybe (Cluster) }) -> CreateClusterResponse
 ```
 
 Constructs CreateClusterResponse's fields from required parameters
@@ -474,7 +474,7 @@ Constructs CreateClusterResponse's fields from required parameters
 
 ``` purescript
 newtype CreateHsmRequest
-  = CreateHsmRequest { "ClusterId" :: ClusterId, "AvailabilityZone" :: ExternalAz, "IpAddress" :: NullOrUndefined (IpAddress) }
+  = CreateHsmRequest { "ClusterId" :: ClusterId, "AvailabilityZone" :: ExternalAz, "IpAddress" :: Maybe (IpAddress) }
 ```
 
 ##### Instances
@@ -497,7 +497,7 @@ Constructs CreateHsmRequest from required parameters
 #### `newCreateHsmRequest'`
 
 ``` purescript
-newCreateHsmRequest' :: ExternalAz -> ClusterId -> ({ "ClusterId" :: ClusterId, "AvailabilityZone" :: ExternalAz, "IpAddress" :: NullOrUndefined (IpAddress) } -> { "ClusterId" :: ClusterId, "AvailabilityZone" :: ExternalAz, "IpAddress" :: NullOrUndefined (IpAddress) }) -> CreateHsmRequest
+newCreateHsmRequest' :: ExternalAz -> ClusterId -> ({ "ClusterId" :: ClusterId, "AvailabilityZone" :: ExternalAz, "IpAddress" :: Maybe (IpAddress) } -> { "ClusterId" :: ClusterId, "AvailabilityZone" :: ExternalAz, "IpAddress" :: Maybe (IpAddress) }) -> CreateHsmRequest
 ```
 
 Constructs CreateHsmRequest's fields from required parameters
@@ -506,7 +506,7 @@ Constructs CreateHsmRequest's fields from required parameters
 
 ``` purescript
 newtype CreateHsmResponse
-  = CreateHsmResponse { "Hsm" :: NullOrUndefined (Hsm) }
+  = CreateHsmResponse { "Hsm" :: Maybe (Hsm) }
 ```
 
 ##### Instances
@@ -529,7 +529,7 @@ Constructs CreateHsmResponse from required parameters
 #### `newCreateHsmResponse'`
 
 ``` purescript
-newCreateHsmResponse' :: ({ "Hsm" :: NullOrUndefined (Hsm) } -> { "Hsm" :: NullOrUndefined (Hsm) }) -> CreateHsmResponse
+newCreateHsmResponse' :: ({ "Hsm" :: Maybe (Hsm) } -> { "Hsm" :: Maybe (Hsm) }) -> CreateHsmResponse
 ```
 
 Constructs CreateHsmResponse's fields from required parameters
@@ -570,7 +570,7 @@ Constructs DeleteClusterRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteClusterResponse
-  = DeleteClusterResponse { "Cluster" :: NullOrUndefined (Cluster) }
+  = DeleteClusterResponse { "Cluster" :: Maybe (Cluster) }
 ```
 
 ##### Instances
@@ -593,7 +593,7 @@ Constructs DeleteClusterResponse from required parameters
 #### `newDeleteClusterResponse'`
 
 ``` purescript
-newDeleteClusterResponse' :: ({ "Cluster" :: NullOrUndefined (Cluster) } -> { "Cluster" :: NullOrUndefined (Cluster) }) -> DeleteClusterResponse
+newDeleteClusterResponse' :: ({ "Cluster" :: Maybe (Cluster) } -> { "Cluster" :: Maybe (Cluster) }) -> DeleteClusterResponse
 ```
 
 Constructs DeleteClusterResponse's fields from required parameters
@@ -602,7 +602,7 @@ Constructs DeleteClusterResponse's fields from required parameters
 
 ``` purescript
 newtype DeleteHsmRequest
-  = DeleteHsmRequest { "ClusterId" :: ClusterId, "HsmId" :: NullOrUndefined (HsmId), "EniId" :: NullOrUndefined (EniId), "EniIp" :: NullOrUndefined (IpAddress) }
+  = DeleteHsmRequest { "ClusterId" :: ClusterId, "HsmId" :: Maybe (HsmId), "EniId" :: Maybe (EniId), "EniIp" :: Maybe (IpAddress) }
 ```
 
 ##### Instances
@@ -625,7 +625,7 @@ Constructs DeleteHsmRequest from required parameters
 #### `newDeleteHsmRequest'`
 
 ``` purescript
-newDeleteHsmRequest' :: ClusterId -> ({ "ClusterId" :: ClusterId, "HsmId" :: NullOrUndefined (HsmId), "EniId" :: NullOrUndefined (EniId), "EniIp" :: NullOrUndefined (IpAddress) } -> { "ClusterId" :: ClusterId, "HsmId" :: NullOrUndefined (HsmId), "EniId" :: NullOrUndefined (EniId), "EniIp" :: NullOrUndefined (IpAddress) }) -> DeleteHsmRequest
+newDeleteHsmRequest' :: ClusterId -> ({ "ClusterId" :: ClusterId, "HsmId" :: Maybe (HsmId), "EniId" :: Maybe (EniId), "EniIp" :: Maybe (IpAddress) } -> { "ClusterId" :: ClusterId, "HsmId" :: Maybe (HsmId), "EniId" :: Maybe (EniId), "EniIp" :: Maybe (IpAddress) }) -> DeleteHsmRequest
 ```
 
 Constructs DeleteHsmRequest's fields from required parameters
@@ -634,7 +634,7 @@ Constructs DeleteHsmRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteHsmResponse
-  = DeleteHsmResponse { "HsmId" :: NullOrUndefined (HsmId) }
+  = DeleteHsmResponse { "HsmId" :: Maybe (HsmId) }
 ```
 
 ##### Instances
@@ -657,7 +657,7 @@ Constructs DeleteHsmResponse from required parameters
 #### `newDeleteHsmResponse'`
 
 ``` purescript
-newDeleteHsmResponse' :: ({ "HsmId" :: NullOrUndefined (HsmId) } -> { "HsmId" :: NullOrUndefined (HsmId) }) -> DeleteHsmResponse
+newDeleteHsmResponse' :: ({ "HsmId" :: Maybe (HsmId) } -> { "HsmId" :: Maybe (HsmId) }) -> DeleteHsmResponse
 ```
 
 Constructs DeleteHsmResponse's fields from required parameters
@@ -666,7 +666,7 @@ Constructs DeleteHsmResponse's fields from required parameters
 
 ``` purescript
 newtype DescribeBackupsRequest
-  = DescribeBackupsRequest { "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize), "Filters" :: NullOrUndefined (Filters) }
+  = DescribeBackupsRequest { "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize), "Filters" :: Maybe (Filters) }
 ```
 
 ##### Instances
@@ -689,7 +689,7 @@ Constructs DescribeBackupsRequest from required parameters
 #### `newDescribeBackupsRequest'`
 
 ``` purescript
-newDescribeBackupsRequest' :: ({ "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize), "Filters" :: NullOrUndefined (Filters) } -> { "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize), "Filters" :: NullOrUndefined (Filters) }) -> DescribeBackupsRequest
+newDescribeBackupsRequest' :: ({ "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize), "Filters" :: Maybe (Filters) } -> { "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize), "Filters" :: Maybe (Filters) }) -> DescribeBackupsRequest
 ```
 
 Constructs DescribeBackupsRequest's fields from required parameters
@@ -698,7 +698,7 @@ Constructs DescribeBackupsRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeBackupsResponse
-  = DescribeBackupsResponse { "Backups" :: NullOrUndefined (Backups), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeBackupsResponse { "Backups" :: Maybe (Backups), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -721,7 +721,7 @@ Constructs DescribeBackupsResponse from required parameters
 #### `newDescribeBackupsResponse'`
 
 ``` purescript
-newDescribeBackupsResponse' :: ({ "Backups" :: NullOrUndefined (Backups), "NextToken" :: NullOrUndefined (NextToken) } -> { "Backups" :: NullOrUndefined (Backups), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeBackupsResponse
+newDescribeBackupsResponse' :: ({ "Backups" :: Maybe (Backups), "NextToken" :: Maybe (NextToken) } -> { "Backups" :: Maybe (Backups), "NextToken" :: Maybe (NextToken) }) -> DescribeBackupsResponse
 ```
 
 Constructs DescribeBackupsResponse's fields from required parameters
@@ -730,7 +730,7 @@ Constructs DescribeBackupsResponse's fields from required parameters
 
 ``` purescript
 newtype DescribeClustersRequest
-  = DescribeClustersRequest { "Filters" :: NullOrUndefined (Filters), "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize) }
+  = DescribeClustersRequest { "Filters" :: Maybe (Filters), "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize) }
 ```
 
 ##### Instances
@@ -753,7 +753,7 @@ Constructs DescribeClustersRequest from required parameters
 #### `newDescribeClustersRequest'`
 
 ``` purescript
-newDescribeClustersRequest' :: ({ "Filters" :: NullOrUndefined (Filters), "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize) } -> { "Filters" :: NullOrUndefined (Filters), "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize) }) -> DescribeClustersRequest
+newDescribeClustersRequest' :: ({ "Filters" :: Maybe (Filters), "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize) } -> { "Filters" :: Maybe (Filters), "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize) }) -> DescribeClustersRequest
 ```
 
 Constructs DescribeClustersRequest's fields from required parameters
@@ -762,7 +762,7 @@ Constructs DescribeClustersRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeClustersResponse
-  = DescribeClustersResponse { "Clusters" :: NullOrUndefined (Clusters), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeClustersResponse { "Clusters" :: Maybe (Clusters), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -785,7 +785,7 @@ Constructs DescribeClustersResponse from required parameters
 #### `newDescribeClustersResponse'`
 
 ``` purescript
-newDescribeClustersResponse' :: ({ "Clusters" :: NullOrUndefined (Clusters), "NextToken" :: NullOrUndefined (NextToken) } -> { "Clusters" :: NullOrUndefined (Clusters), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeClustersResponse
+newDescribeClustersResponse' :: ({ "Clusters" :: Maybe (Clusters), "NextToken" :: Maybe (NextToken) } -> { "Clusters" :: Maybe (Clusters), "NextToken" :: Maybe (NextToken) }) -> DescribeClustersResponse
 ```
 
 Constructs DescribeClustersResponse's fields from required parameters
@@ -874,7 +874,7 @@ Encode Filters
 
 ``` purescript
 newtype Hsm
-  = Hsm { "AvailabilityZone" :: NullOrUndefined (ExternalAz), "ClusterId" :: NullOrUndefined (ClusterId), "SubnetId" :: NullOrUndefined (SubnetId), "EniId" :: NullOrUndefined (EniId), "EniIp" :: NullOrUndefined (IpAddress), "HsmId" :: HsmId, "State" :: NullOrUndefined (HsmState), "StateMessage" :: NullOrUndefined (String) }
+  = Hsm { "AvailabilityZone" :: Maybe (ExternalAz), "ClusterId" :: Maybe (ClusterId), "SubnetId" :: Maybe (SubnetId), "EniId" :: Maybe (EniId), "EniIp" :: Maybe (IpAddress), "HsmId" :: HsmId, "State" :: Maybe (HsmState), "StateMessage" :: Maybe (String) }
 ```
 
 <p>Contains information about a hardware security module (HSM) in an AWS CloudHSM cluster.</p>
@@ -899,7 +899,7 @@ Constructs Hsm from required parameters
 #### `newHsm'`
 
 ``` purescript
-newHsm' :: HsmId -> ({ "AvailabilityZone" :: NullOrUndefined (ExternalAz), "ClusterId" :: NullOrUndefined (ClusterId), "SubnetId" :: NullOrUndefined (SubnetId), "EniId" :: NullOrUndefined (EniId), "EniIp" :: NullOrUndefined (IpAddress), "HsmId" :: HsmId, "State" :: NullOrUndefined (HsmState), "StateMessage" :: NullOrUndefined (String) } -> { "AvailabilityZone" :: NullOrUndefined (ExternalAz), "ClusterId" :: NullOrUndefined (ClusterId), "SubnetId" :: NullOrUndefined (SubnetId), "EniId" :: NullOrUndefined (EniId), "EniIp" :: NullOrUndefined (IpAddress), "HsmId" :: HsmId, "State" :: NullOrUndefined (HsmState), "StateMessage" :: NullOrUndefined (String) }) -> Hsm
+newHsm' :: HsmId -> ({ "AvailabilityZone" :: Maybe (ExternalAz), "ClusterId" :: Maybe (ClusterId), "SubnetId" :: Maybe (SubnetId), "EniId" :: Maybe (EniId), "EniIp" :: Maybe (IpAddress), "HsmId" :: HsmId, "State" :: Maybe (HsmState), "StateMessage" :: Maybe (String) } -> { "AvailabilityZone" :: Maybe (ExternalAz), "ClusterId" :: Maybe (ClusterId), "SubnetId" :: Maybe (SubnetId), "EniId" :: Maybe (EniId), "EniIp" :: Maybe (IpAddress), "HsmId" :: HsmId, "State" :: Maybe (HsmState), "StateMessage" :: Maybe (String) }) -> Hsm
 ```
 
 Constructs Hsm's fields from required parameters
@@ -1004,7 +1004,7 @@ Constructs InitializeClusterRequest's fields from required parameters
 
 ``` purescript
 newtype InitializeClusterResponse
-  = InitializeClusterResponse { "State" :: NullOrUndefined (ClusterState), "StateMessage" :: NullOrUndefined (StateMessage) }
+  = InitializeClusterResponse { "State" :: Maybe (ClusterState), "StateMessage" :: Maybe (StateMessage) }
 ```
 
 ##### Instances
@@ -1027,7 +1027,7 @@ Constructs InitializeClusterResponse from required parameters
 #### `newInitializeClusterResponse'`
 
 ``` purescript
-newInitializeClusterResponse' :: ({ "State" :: NullOrUndefined (ClusterState), "StateMessage" :: NullOrUndefined (StateMessage) } -> { "State" :: NullOrUndefined (ClusterState), "StateMessage" :: NullOrUndefined (StateMessage) }) -> InitializeClusterResponse
+newInitializeClusterResponse' :: ({ "State" :: Maybe (ClusterState), "StateMessage" :: Maybe (StateMessage) } -> { "State" :: Maybe (ClusterState), "StateMessage" :: Maybe (StateMessage) }) -> InitializeClusterResponse
 ```
 
 Constructs InitializeClusterResponse's fields from required parameters
@@ -1052,7 +1052,7 @@ Encode IpAddress
 
 ``` purescript
 newtype ListTagsRequest
-  = ListTagsRequest { "ResourceId" :: ClusterId, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize) }
+  = ListTagsRequest { "ResourceId" :: ClusterId, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize) }
 ```
 
 ##### Instances
@@ -1075,7 +1075,7 @@ Constructs ListTagsRequest from required parameters
 #### `newListTagsRequest'`
 
 ``` purescript
-newListTagsRequest' :: ClusterId -> ({ "ResourceId" :: ClusterId, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize) } -> { "ResourceId" :: ClusterId, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxSize) }) -> ListTagsRequest
+newListTagsRequest' :: ClusterId -> ({ "ResourceId" :: ClusterId, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize) } -> { "ResourceId" :: ClusterId, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxSize) }) -> ListTagsRequest
 ```
 
 Constructs ListTagsRequest's fields from required parameters
@@ -1084,7 +1084,7 @@ Constructs ListTagsRequest's fields from required parameters
 
 ``` purescript
 newtype ListTagsResponse
-  = ListTagsResponse { "TagList" :: TagList, "NextToken" :: NullOrUndefined (NextToken) }
+  = ListTagsResponse { "TagList" :: TagList, "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -1107,7 +1107,7 @@ Constructs ListTagsResponse from required parameters
 #### `newListTagsResponse'`
 
 ``` purescript
-newListTagsResponse' :: TagList -> ({ "TagList" :: TagList, "NextToken" :: NullOrUndefined (NextToken) } -> { "TagList" :: TagList, "NextToken" :: NullOrUndefined (NextToken) }) -> ListTagsResponse
+newListTagsResponse' :: TagList -> ({ "TagList" :: TagList, "NextToken" :: Maybe (NextToken) } -> { "TagList" :: TagList, "NextToken" :: Maybe (NextToken) }) -> ListTagsResponse
 ```
 
 Constructs ListTagsResponse's fields from required parameters

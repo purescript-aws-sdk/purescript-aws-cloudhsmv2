@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -21,9 +20,9 @@ options = defaultOptions { unwrapSingleConstructors = true }
 -- | <p>Contains information about a backup of an AWS CloudHSM cluster.</p>
 newtype Backup = Backup 
   { "BackupId" :: (BackupId)
-  , "BackupState" :: NullOrUndefined (BackupState)
-  , "ClusterId" :: NullOrUndefined (ClusterId)
-  , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp)
+  , "BackupState" :: Maybe (BackupState)
+  , "ClusterId" :: Maybe (ClusterId)
+  , "CreateTimestamp" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeBackup :: Newtype Backup _
 derive instance repGenericBackup :: Generic Backup _
@@ -33,12 +32,12 @@ instance encodeBackup :: Encode Backup where encode = genericEncode options
 
 -- | Constructs Backup from required parameters
 newBackup :: BackupId -> Backup
-newBackup _BackupId = Backup { "BackupId": _BackupId, "BackupState": (NullOrUndefined Nothing), "ClusterId": (NullOrUndefined Nothing), "CreateTimestamp": (NullOrUndefined Nothing) }
+newBackup _BackupId = Backup { "BackupId": _BackupId, "BackupState": Nothing, "ClusterId": Nothing, "CreateTimestamp": Nothing }
 
 -- | Constructs Backup's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBackup' :: BackupId -> ( { "BackupId" :: (BackupId) , "BackupState" :: NullOrUndefined (BackupState) , "ClusterId" :: NullOrUndefined (ClusterId) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) } -> {"BackupId" :: (BackupId) , "BackupState" :: NullOrUndefined (BackupState) , "ClusterId" :: NullOrUndefined (ClusterId) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) } ) -> Backup
-newBackup' _BackupId customize = (Backup <<< customize) { "BackupId": _BackupId, "BackupState": (NullOrUndefined Nothing), "ClusterId": (NullOrUndefined Nothing), "CreateTimestamp": (NullOrUndefined Nothing) }
+newBackup' :: BackupId -> ( { "BackupId" :: (BackupId) , "BackupState" :: Maybe (BackupState) , "ClusterId" :: Maybe (ClusterId) , "CreateTimestamp" :: Maybe (Types.Timestamp) } -> {"BackupId" :: (BackupId) , "BackupState" :: Maybe (BackupState) , "ClusterId" :: Maybe (ClusterId) , "CreateTimestamp" :: Maybe (Types.Timestamp) } ) -> Backup
+newBackup' _BackupId customize = (Backup <<< customize) { "BackupId": _BackupId, "BackupState": Nothing, "ClusterId": Nothing, "CreateTimestamp": Nothing }
 
 
 
@@ -89,11 +88,11 @@ instance encodeCert :: Encode Cert where encode = genericEncode options
 
 -- | <p>Contains one or more certificates or a certificate signing request (CSR).</p>
 newtype Certificates = Certificates 
-  { "ClusterCsr" :: NullOrUndefined (Cert)
-  , "HsmCertificate" :: NullOrUndefined (Cert)
-  , "AwsHardwareCertificate" :: NullOrUndefined (Cert)
-  , "ManufacturerHardwareCertificate" :: NullOrUndefined (Cert)
-  , "ClusterCertificate" :: NullOrUndefined (Cert)
+  { "ClusterCsr" :: Maybe (Cert)
+  , "HsmCertificate" :: Maybe (Cert)
+  , "AwsHardwareCertificate" :: Maybe (Cert)
+  , "ManufacturerHardwareCertificate" :: Maybe (Cert)
+  , "ClusterCertificate" :: Maybe (Cert)
   }
 derive instance newtypeCertificates :: Newtype Certificates _
 derive instance repGenericCertificates :: Generic Certificates _
@@ -103,18 +102,18 @@ instance encodeCertificates :: Encode Certificates where encode = genericEncode 
 
 -- | Constructs Certificates from required parameters
 newCertificates :: Certificates
-newCertificates  = Certificates { "AwsHardwareCertificate": (NullOrUndefined Nothing), "ClusterCertificate": (NullOrUndefined Nothing), "ClusterCsr": (NullOrUndefined Nothing), "HsmCertificate": (NullOrUndefined Nothing), "ManufacturerHardwareCertificate": (NullOrUndefined Nothing) }
+newCertificates  = Certificates { "AwsHardwareCertificate": Nothing, "ClusterCertificate": Nothing, "ClusterCsr": Nothing, "HsmCertificate": Nothing, "ManufacturerHardwareCertificate": Nothing }
 
 -- | Constructs Certificates's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCertificates' :: ( { "ClusterCsr" :: NullOrUndefined (Cert) , "HsmCertificate" :: NullOrUndefined (Cert) , "AwsHardwareCertificate" :: NullOrUndefined (Cert) , "ManufacturerHardwareCertificate" :: NullOrUndefined (Cert) , "ClusterCertificate" :: NullOrUndefined (Cert) } -> {"ClusterCsr" :: NullOrUndefined (Cert) , "HsmCertificate" :: NullOrUndefined (Cert) , "AwsHardwareCertificate" :: NullOrUndefined (Cert) , "ManufacturerHardwareCertificate" :: NullOrUndefined (Cert) , "ClusterCertificate" :: NullOrUndefined (Cert) } ) -> Certificates
-newCertificates'  customize = (Certificates <<< customize) { "AwsHardwareCertificate": (NullOrUndefined Nothing), "ClusterCertificate": (NullOrUndefined Nothing), "ClusterCsr": (NullOrUndefined Nothing), "HsmCertificate": (NullOrUndefined Nothing), "ManufacturerHardwareCertificate": (NullOrUndefined Nothing) }
+newCertificates' :: ( { "ClusterCsr" :: Maybe (Cert) , "HsmCertificate" :: Maybe (Cert) , "AwsHardwareCertificate" :: Maybe (Cert) , "ManufacturerHardwareCertificate" :: Maybe (Cert) , "ClusterCertificate" :: Maybe (Cert) } -> {"ClusterCsr" :: Maybe (Cert) , "HsmCertificate" :: Maybe (Cert) , "AwsHardwareCertificate" :: Maybe (Cert) , "ManufacturerHardwareCertificate" :: Maybe (Cert) , "ClusterCertificate" :: Maybe (Cert) } ) -> Certificates
+newCertificates'  customize = (Certificates <<< customize) { "AwsHardwareCertificate": Nothing, "ClusterCertificate": Nothing, "ClusterCsr": Nothing, "HsmCertificate": Nothing, "ManufacturerHardwareCertificate": Nothing }
 
 
 
 -- | <p>The request was rejected because the requester does not have permission to perform the requested operation.</p>
 newtype CloudHsmAccessDeniedException = CloudHsmAccessDeniedException 
-  { "Message" :: NullOrUndefined (ErrorMessage')
+  { "Message" :: Maybe (ErrorMessage')
   }
 derive instance newtypeCloudHsmAccessDeniedException :: Newtype CloudHsmAccessDeniedException _
 derive instance repGenericCloudHsmAccessDeniedException :: Generic CloudHsmAccessDeniedException _
@@ -124,18 +123,18 @@ instance encodeCloudHsmAccessDeniedException :: Encode CloudHsmAccessDeniedExcep
 
 -- | Constructs CloudHsmAccessDeniedException from required parameters
 newCloudHsmAccessDeniedException :: CloudHsmAccessDeniedException
-newCloudHsmAccessDeniedException  = CloudHsmAccessDeniedException { "Message": (NullOrUndefined Nothing) }
+newCloudHsmAccessDeniedException  = CloudHsmAccessDeniedException { "Message": Nothing }
 
 -- | Constructs CloudHsmAccessDeniedException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudHsmAccessDeniedException' :: ( { "Message" :: NullOrUndefined (ErrorMessage') } -> {"Message" :: NullOrUndefined (ErrorMessage') } ) -> CloudHsmAccessDeniedException
-newCloudHsmAccessDeniedException'  customize = (CloudHsmAccessDeniedException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newCloudHsmAccessDeniedException' :: ( { "Message" :: Maybe (ErrorMessage') } -> {"Message" :: Maybe (ErrorMessage') } ) -> CloudHsmAccessDeniedException
+newCloudHsmAccessDeniedException'  customize = (CloudHsmAccessDeniedException <<< customize) { "Message": Nothing }
 
 
 
 -- | <p>The request was rejected because of an AWS CloudHSM internal failure. The request can be retried.</p>
 newtype CloudHsmInternalFailureException = CloudHsmInternalFailureException 
-  { "Message" :: NullOrUndefined (ErrorMessage')
+  { "Message" :: Maybe (ErrorMessage')
   }
 derive instance newtypeCloudHsmInternalFailureException :: Newtype CloudHsmInternalFailureException _
 derive instance repGenericCloudHsmInternalFailureException :: Generic CloudHsmInternalFailureException _
@@ -145,18 +144,18 @@ instance encodeCloudHsmInternalFailureException :: Encode CloudHsmInternalFailur
 
 -- | Constructs CloudHsmInternalFailureException from required parameters
 newCloudHsmInternalFailureException :: CloudHsmInternalFailureException
-newCloudHsmInternalFailureException  = CloudHsmInternalFailureException { "Message": (NullOrUndefined Nothing) }
+newCloudHsmInternalFailureException  = CloudHsmInternalFailureException { "Message": Nothing }
 
 -- | Constructs CloudHsmInternalFailureException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudHsmInternalFailureException' :: ( { "Message" :: NullOrUndefined (ErrorMessage') } -> {"Message" :: NullOrUndefined (ErrorMessage') } ) -> CloudHsmInternalFailureException
-newCloudHsmInternalFailureException'  customize = (CloudHsmInternalFailureException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newCloudHsmInternalFailureException' :: ( { "Message" :: Maybe (ErrorMessage') } -> {"Message" :: Maybe (ErrorMessage') } ) -> CloudHsmInternalFailureException
+newCloudHsmInternalFailureException'  customize = (CloudHsmInternalFailureException <<< customize) { "Message": Nothing }
 
 
 
 -- | <p>The request was rejected because it is not a valid request.</p>
 newtype CloudHsmInvalidRequestException = CloudHsmInvalidRequestException 
-  { "Message" :: NullOrUndefined (ErrorMessage')
+  { "Message" :: Maybe (ErrorMessage')
   }
 derive instance newtypeCloudHsmInvalidRequestException :: Newtype CloudHsmInvalidRequestException _
 derive instance repGenericCloudHsmInvalidRequestException :: Generic CloudHsmInvalidRequestException _
@@ -166,18 +165,18 @@ instance encodeCloudHsmInvalidRequestException :: Encode CloudHsmInvalidRequestE
 
 -- | Constructs CloudHsmInvalidRequestException from required parameters
 newCloudHsmInvalidRequestException :: CloudHsmInvalidRequestException
-newCloudHsmInvalidRequestException  = CloudHsmInvalidRequestException { "Message": (NullOrUndefined Nothing) }
+newCloudHsmInvalidRequestException  = CloudHsmInvalidRequestException { "Message": Nothing }
 
 -- | Constructs CloudHsmInvalidRequestException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudHsmInvalidRequestException' :: ( { "Message" :: NullOrUndefined (ErrorMessage') } -> {"Message" :: NullOrUndefined (ErrorMessage') } ) -> CloudHsmInvalidRequestException
-newCloudHsmInvalidRequestException'  customize = (CloudHsmInvalidRequestException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newCloudHsmInvalidRequestException' :: ( { "Message" :: Maybe (ErrorMessage') } -> {"Message" :: Maybe (ErrorMessage') } ) -> CloudHsmInvalidRequestException
+newCloudHsmInvalidRequestException'  customize = (CloudHsmInvalidRequestException <<< customize) { "Message": Nothing }
 
 
 
 -- | <p>The request was rejected because it refers to a resource that cannot be found.</p>
 newtype CloudHsmResourceNotFoundException = CloudHsmResourceNotFoundException 
-  { "Message" :: NullOrUndefined (ErrorMessage')
+  { "Message" :: Maybe (ErrorMessage')
   }
 derive instance newtypeCloudHsmResourceNotFoundException :: Newtype CloudHsmResourceNotFoundException _
 derive instance repGenericCloudHsmResourceNotFoundException :: Generic CloudHsmResourceNotFoundException _
@@ -187,18 +186,18 @@ instance encodeCloudHsmResourceNotFoundException :: Encode CloudHsmResourceNotFo
 
 -- | Constructs CloudHsmResourceNotFoundException from required parameters
 newCloudHsmResourceNotFoundException :: CloudHsmResourceNotFoundException
-newCloudHsmResourceNotFoundException  = CloudHsmResourceNotFoundException { "Message": (NullOrUndefined Nothing) }
+newCloudHsmResourceNotFoundException  = CloudHsmResourceNotFoundException { "Message": Nothing }
 
 -- | Constructs CloudHsmResourceNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudHsmResourceNotFoundException' :: ( { "Message" :: NullOrUndefined (ErrorMessage') } -> {"Message" :: NullOrUndefined (ErrorMessage') } ) -> CloudHsmResourceNotFoundException
-newCloudHsmResourceNotFoundException'  customize = (CloudHsmResourceNotFoundException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newCloudHsmResourceNotFoundException' :: ( { "Message" :: Maybe (ErrorMessage') } -> {"Message" :: Maybe (ErrorMessage') } ) -> CloudHsmResourceNotFoundException
+newCloudHsmResourceNotFoundException'  customize = (CloudHsmResourceNotFoundException <<< customize) { "Message": Nothing }
 
 
 
 -- | <p>The request was rejected because an error occurred.</p>
 newtype CloudHsmServiceException = CloudHsmServiceException 
-  { "Message" :: NullOrUndefined (ErrorMessage')
+  { "Message" :: Maybe (ErrorMessage')
   }
 derive instance newtypeCloudHsmServiceException :: Newtype CloudHsmServiceException _
 derive instance repGenericCloudHsmServiceException :: Generic CloudHsmServiceException _
@@ -208,30 +207,30 @@ instance encodeCloudHsmServiceException :: Encode CloudHsmServiceException where
 
 -- | Constructs CloudHsmServiceException from required parameters
 newCloudHsmServiceException :: CloudHsmServiceException
-newCloudHsmServiceException  = CloudHsmServiceException { "Message": (NullOrUndefined Nothing) }
+newCloudHsmServiceException  = CloudHsmServiceException { "Message": Nothing }
 
 -- | Constructs CloudHsmServiceException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudHsmServiceException' :: ( { "Message" :: NullOrUndefined (ErrorMessage') } -> {"Message" :: NullOrUndefined (ErrorMessage') } ) -> CloudHsmServiceException
-newCloudHsmServiceException'  customize = (CloudHsmServiceException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newCloudHsmServiceException' :: ( { "Message" :: Maybe (ErrorMessage') } -> {"Message" :: Maybe (ErrorMessage') } ) -> CloudHsmServiceException
+newCloudHsmServiceException'  customize = (CloudHsmServiceException <<< customize) { "Message": Nothing }
 
 
 
 -- | <p>Contains information about an AWS CloudHSM cluster.</p>
 newtype Cluster = Cluster 
-  { "BackupPolicy" :: NullOrUndefined (BackupPolicy)
-  , "ClusterId" :: NullOrUndefined (ClusterId)
-  , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Hsms" :: NullOrUndefined (Hsms)
-  , "HsmType" :: NullOrUndefined (HsmType)
-  , "PreCoPassword" :: NullOrUndefined (PreCoPassword)
-  , "SecurityGroup" :: NullOrUndefined (SecurityGroup)
-  , "SourceBackupId" :: NullOrUndefined (BackupId)
-  , "State" :: NullOrUndefined (ClusterState)
-  , "StateMessage" :: NullOrUndefined (StateMessage)
-  , "SubnetMapping" :: NullOrUndefined (ExternalSubnetMapping)
-  , "VpcId" :: NullOrUndefined (VpcId)
-  , "Certificates" :: NullOrUndefined (Certificates)
+  { "BackupPolicy" :: Maybe (BackupPolicy)
+  , "ClusterId" :: Maybe (ClusterId)
+  , "CreateTimestamp" :: Maybe (Types.Timestamp)
+  , "Hsms" :: Maybe (Hsms)
+  , "HsmType" :: Maybe (HsmType)
+  , "PreCoPassword" :: Maybe (PreCoPassword)
+  , "SecurityGroup" :: Maybe (SecurityGroup)
+  , "SourceBackupId" :: Maybe (BackupId)
+  , "State" :: Maybe (ClusterState)
+  , "StateMessage" :: Maybe (StateMessage)
+  , "SubnetMapping" :: Maybe (ExternalSubnetMapping)
+  , "VpcId" :: Maybe (VpcId)
+  , "Certificates" :: Maybe (Certificates)
   }
 derive instance newtypeCluster :: Newtype Cluster _
 derive instance repGenericCluster :: Generic Cluster _
@@ -241,12 +240,12 @@ instance encodeCluster :: Encode Cluster where encode = genericEncode options
 
 -- | Constructs Cluster from required parameters
 newCluster :: Cluster
-newCluster  = Cluster { "BackupPolicy": (NullOrUndefined Nothing), "Certificates": (NullOrUndefined Nothing), "ClusterId": (NullOrUndefined Nothing), "CreateTimestamp": (NullOrUndefined Nothing), "HsmType": (NullOrUndefined Nothing), "Hsms": (NullOrUndefined Nothing), "PreCoPassword": (NullOrUndefined Nothing), "SecurityGroup": (NullOrUndefined Nothing), "SourceBackupId": (NullOrUndefined Nothing), "State": (NullOrUndefined Nothing), "StateMessage": (NullOrUndefined Nothing), "SubnetMapping": (NullOrUndefined Nothing), "VpcId": (NullOrUndefined Nothing) }
+newCluster  = Cluster { "BackupPolicy": Nothing, "Certificates": Nothing, "ClusterId": Nothing, "CreateTimestamp": Nothing, "HsmType": Nothing, "Hsms": Nothing, "PreCoPassword": Nothing, "SecurityGroup": Nothing, "SourceBackupId": Nothing, "State": Nothing, "StateMessage": Nothing, "SubnetMapping": Nothing, "VpcId": Nothing }
 
 -- | Constructs Cluster's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCluster' :: ( { "BackupPolicy" :: NullOrUndefined (BackupPolicy) , "ClusterId" :: NullOrUndefined (ClusterId) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) , "Hsms" :: NullOrUndefined (Hsms) , "HsmType" :: NullOrUndefined (HsmType) , "PreCoPassword" :: NullOrUndefined (PreCoPassword) , "SecurityGroup" :: NullOrUndefined (SecurityGroup) , "SourceBackupId" :: NullOrUndefined (BackupId) , "State" :: NullOrUndefined (ClusterState) , "StateMessage" :: NullOrUndefined (StateMessage) , "SubnetMapping" :: NullOrUndefined (ExternalSubnetMapping) , "VpcId" :: NullOrUndefined (VpcId) , "Certificates" :: NullOrUndefined (Certificates) } -> {"BackupPolicy" :: NullOrUndefined (BackupPolicy) , "ClusterId" :: NullOrUndefined (ClusterId) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) , "Hsms" :: NullOrUndefined (Hsms) , "HsmType" :: NullOrUndefined (HsmType) , "PreCoPassword" :: NullOrUndefined (PreCoPassword) , "SecurityGroup" :: NullOrUndefined (SecurityGroup) , "SourceBackupId" :: NullOrUndefined (BackupId) , "State" :: NullOrUndefined (ClusterState) , "StateMessage" :: NullOrUndefined (StateMessage) , "SubnetMapping" :: NullOrUndefined (ExternalSubnetMapping) , "VpcId" :: NullOrUndefined (VpcId) , "Certificates" :: NullOrUndefined (Certificates) } ) -> Cluster
-newCluster'  customize = (Cluster <<< customize) { "BackupPolicy": (NullOrUndefined Nothing), "Certificates": (NullOrUndefined Nothing), "ClusterId": (NullOrUndefined Nothing), "CreateTimestamp": (NullOrUndefined Nothing), "HsmType": (NullOrUndefined Nothing), "Hsms": (NullOrUndefined Nothing), "PreCoPassword": (NullOrUndefined Nothing), "SecurityGroup": (NullOrUndefined Nothing), "SourceBackupId": (NullOrUndefined Nothing), "State": (NullOrUndefined Nothing), "StateMessage": (NullOrUndefined Nothing), "SubnetMapping": (NullOrUndefined Nothing), "VpcId": (NullOrUndefined Nothing) }
+newCluster' :: ( { "BackupPolicy" :: Maybe (BackupPolicy) , "ClusterId" :: Maybe (ClusterId) , "CreateTimestamp" :: Maybe (Types.Timestamp) , "Hsms" :: Maybe (Hsms) , "HsmType" :: Maybe (HsmType) , "PreCoPassword" :: Maybe (PreCoPassword) , "SecurityGroup" :: Maybe (SecurityGroup) , "SourceBackupId" :: Maybe (BackupId) , "State" :: Maybe (ClusterState) , "StateMessage" :: Maybe (StateMessage) , "SubnetMapping" :: Maybe (ExternalSubnetMapping) , "VpcId" :: Maybe (VpcId) , "Certificates" :: Maybe (Certificates) } -> {"BackupPolicy" :: Maybe (BackupPolicy) , "ClusterId" :: Maybe (ClusterId) , "CreateTimestamp" :: Maybe (Types.Timestamp) , "Hsms" :: Maybe (Hsms) , "HsmType" :: Maybe (HsmType) , "PreCoPassword" :: Maybe (PreCoPassword) , "SecurityGroup" :: Maybe (SecurityGroup) , "SourceBackupId" :: Maybe (BackupId) , "State" :: Maybe (ClusterState) , "StateMessage" :: Maybe (StateMessage) , "SubnetMapping" :: Maybe (ExternalSubnetMapping) , "VpcId" :: Maybe (VpcId) , "Certificates" :: Maybe (Certificates) } ) -> Cluster
+newCluster'  customize = (Cluster <<< customize) { "BackupPolicy": Nothing, "Certificates": Nothing, "ClusterId": Nothing, "CreateTimestamp": Nothing, "HsmType": Nothing, "Hsms": Nothing, "PreCoPassword": Nothing, "SecurityGroup": Nothing, "SourceBackupId": Nothing, "State": Nothing, "StateMessage": Nothing, "SubnetMapping": Nothing, "VpcId": Nothing }
 
 
 
@@ -280,7 +279,7 @@ instance encodeClusters :: Encode Clusters where encode = genericEncode options
 newtype CreateClusterRequest = CreateClusterRequest 
   { "SubnetIds" :: (SubnetIds)
   , "HsmType" :: (HsmType)
-  , "SourceBackupId" :: NullOrUndefined (BackupId)
+  , "SourceBackupId" :: Maybe (BackupId)
   }
 derive instance newtypeCreateClusterRequest :: Newtype CreateClusterRequest _
 derive instance repGenericCreateClusterRequest :: Generic CreateClusterRequest _
@@ -290,17 +289,17 @@ instance encodeCreateClusterRequest :: Encode CreateClusterRequest where encode 
 
 -- | Constructs CreateClusterRequest from required parameters
 newCreateClusterRequest :: HsmType -> SubnetIds -> CreateClusterRequest
-newCreateClusterRequest _HsmType _SubnetIds = CreateClusterRequest { "HsmType": _HsmType, "SubnetIds": _SubnetIds, "SourceBackupId": (NullOrUndefined Nothing) }
+newCreateClusterRequest _HsmType _SubnetIds = CreateClusterRequest { "HsmType": _HsmType, "SubnetIds": _SubnetIds, "SourceBackupId": Nothing }
 
 -- | Constructs CreateClusterRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateClusterRequest' :: HsmType -> SubnetIds -> ( { "SubnetIds" :: (SubnetIds) , "HsmType" :: (HsmType) , "SourceBackupId" :: NullOrUndefined (BackupId) } -> {"SubnetIds" :: (SubnetIds) , "HsmType" :: (HsmType) , "SourceBackupId" :: NullOrUndefined (BackupId) } ) -> CreateClusterRequest
-newCreateClusterRequest' _HsmType _SubnetIds customize = (CreateClusterRequest <<< customize) { "HsmType": _HsmType, "SubnetIds": _SubnetIds, "SourceBackupId": (NullOrUndefined Nothing) }
+newCreateClusterRequest' :: HsmType -> SubnetIds -> ( { "SubnetIds" :: (SubnetIds) , "HsmType" :: (HsmType) , "SourceBackupId" :: Maybe (BackupId) } -> {"SubnetIds" :: (SubnetIds) , "HsmType" :: (HsmType) , "SourceBackupId" :: Maybe (BackupId) } ) -> CreateClusterRequest
+newCreateClusterRequest' _HsmType _SubnetIds customize = (CreateClusterRequest <<< customize) { "HsmType": _HsmType, "SubnetIds": _SubnetIds, "SourceBackupId": Nothing }
 
 
 
 newtype CreateClusterResponse = CreateClusterResponse 
-  { "Cluster" :: NullOrUndefined (Cluster)
+  { "Cluster" :: Maybe (Cluster)
   }
 derive instance newtypeCreateClusterResponse :: Newtype CreateClusterResponse _
 derive instance repGenericCreateClusterResponse :: Generic CreateClusterResponse _
@@ -310,19 +309,19 @@ instance encodeCreateClusterResponse :: Encode CreateClusterResponse where encod
 
 -- | Constructs CreateClusterResponse from required parameters
 newCreateClusterResponse :: CreateClusterResponse
-newCreateClusterResponse  = CreateClusterResponse { "Cluster": (NullOrUndefined Nothing) }
+newCreateClusterResponse  = CreateClusterResponse { "Cluster": Nothing }
 
 -- | Constructs CreateClusterResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateClusterResponse' :: ( { "Cluster" :: NullOrUndefined (Cluster) } -> {"Cluster" :: NullOrUndefined (Cluster) } ) -> CreateClusterResponse
-newCreateClusterResponse'  customize = (CreateClusterResponse <<< customize) { "Cluster": (NullOrUndefined Nothing) }
+newCreateClusterResponse' :: ( { "Cluster" :: Maybe (Cluster) } -> {"Cluster" :: Maybe (Cluster) } ) -> CreateClusterResponse
+newCreateClusterResponse'  customize = (CreateClusterResponse <<< customize) { "Cluster": Nothing }
 
 
 
 newtype CreateHsmRequest = CreateHsmRequest 
   { "ClusterId" :: (ClusterId)
   , "AvailabilityZone" :: (ExternalAz)
-  , "IpAddress" :: NullOrUndefined (IpAddress)
+  , "IpAddress" :: Maybe (IpAddress)
   }
 derive instance newtypeCreateHsmRequest :: Newtype CreateHsmRequest _
 derive instance repGenericCreateHsmRequest :: Generic CreateHsmRequest _
@@ -332,17 +331,17 @@ instance encodeCreateHsmRequest :: Encode CreateHsmRequest where encode = generi
 
 -- | Constructs CreateHsmRequest from required parameters
 newCreateHsmRequest :: ExternalAz -> ClusterId -> CreateHsmRequest
-newCreateHsmRequest _AvailabilityZone _ClusterId = CreateHsmRequest { "AvailabilityZone": _AvailabilityZone, "ClusterId": _ClusterId, "IpAddress": (NullOrUndefined Nothing) }
+newCreateHsmRequest _AvailabilityZone _ClusterId = CreateHsmRequest { "AvailabilityZone": _AvailabilityZone, "ClusterId": _ClusterId, "IpAddress": Nothing }
 
 -- | Constructs CreateHsmRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateHsmRequest' :: ExternalAz -> ClusterId -> ( { "ClusterId" :: (ClusterId) , "AvailabilityZone" :: (ExternalAz) , "IpAddress" :: NullOrUndefined (IpAddress) } -> {"ClusterId" :: (ClusterId) , "AvailabilityZone" :: (ExternalAz) , "IpAddress" :: NullOrUndefined (IpAddress) } ) -> CreateHsmRequest
-newCreateHsmRequest' _AvailabilityZone _ClusterId customize = (CreateHsmRequest <<< customize) { "AvailabilityZone": _AvailabilityZone, "ClusterId": _ClusterId, "IpAddress": (NullOrUndefined Nothing) }
+newCreateHsmRequest' :: ExternalAz -> ClusterId -> ( { "ClusterId" :: (ClusterId) , "AvailabilityZone" :: (ExternalAz) , "IpAddress" :: Maybe (IpAddress) } -> {"ClusterId" :: (ClusterId) , "AvailabilityZone" :: (ExternalAz) , "IpAddress" :: Maybe (IpAddress) } ) -> CreateHsmRequest
+newCreateHsmRequest' _AvailabilityZone _ClusterId customize = (CreateHsmRequest <<< customize) { "AvailabilityZone": _AvailabilityZone, "ClusterId": _ClusterId, "IpAddress": Nothing }
 
 
 
 newtype CreateHsmResponse = CreateHsmResponse 
-  { "Hsm" :: NullOrUndefined (Hsm)
+  { "Hsm" :: Maybe (Hsm)
   }
 derive instance newtypeCreateHsmResponse :: Newtype CreateHsmResponse _
 derive instance repGenericCreateHsmResponse :: Generic CreateHsmResponse _
@@ -352,12 +351,12 @@ instance encodeCreateHsmResponse :: Encode CreateHsmResponse where encode = gene
 
 -- | Constructs CreateHsmResponse from required parameters
 newCreateHsmResponse :: CreateHsmResponse
-newCreateHsmResponse  = CreateHsmResponse { "Hsm": (NullOrUndefined Nothing) }
+newCreateHsmResponse  = CreateHsmResponse { "Hsm": Nothing }
 
 -- | Constructs CreateHsmResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateHsmResponse' :: ( { "Hsm" :: NullOrUndefined (Hsm) } -> {"Hsm" :: NullOrUndefined (Hsm) } ) -> CreateHsmResponse
-newCreateHsmResponse'  customize = (CreateHsmResponse <<< customize) { "Hsm": (NullOrUndefined Nothing) }
+newCreateHsmResponse' :: ( { "Hsm" :: Maybe (Hsm) } -> {"Hsm" :: Maybe (Hsm) } ) -> CreateHsmResponse
+newCreateHsmResponse'  customize = (CreateHsmResponse <<< customize) { "Hsm": Nothing }
 
 
 
@@ -382,7 +381,7 @@ newDeleteClusterRequest' _ClusterId customize = (DeleteClusterRequest <<< custom
 
 
 newtype DeleteClusterResponse = DeleteClusterResponse 
-  { "Cluster" :: NullOrUndefined (Cluster)
+  { "Cluster" :: Maybe (Cluster)
   }
 derive instance newtypeDeleteClusterResponse :: Newtype DeleteClusterResponse _
 derive instance repGenericDeleteClusterResponse :: Generic DeleteClusterResponse _
@@ -392,20 +391,20 @@ instance encodeDeleteClusterResponse :: Encode DeleteClusterResponse where encod
 
 -- | Constructs DeleteClusterResponse from required parameters
 newDeleteClusterResponse :: DeleteClusterResponse
-newDeleteClusterResponse  = DeleteClusterResponse { "Cluster": (NullOrUndefined Nothing) }
+newDeleteClusterResponse  = DeleteClusterResponse { "Cluster": Nothing }
 
 -- | Constructs DeleteClusterResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteClusterResponse' :: ( { "Cluster" :: NullOrUndefined (Cluster) } -> {"Cluster" :: NullOrUndefined (Cluster) } ) -> DeleteClusterResponse
-newDeleteClusterResponse'  customize = (DeleteClusterResponse <<< customize) { "Cluster": (NullOrUndefined Nothing) }
+newDeleteClusterResponse' :: ( { "Cluster" :: Maybe (Cluster) } -> {"Cluster" :: Maybe (Cluster) } ) -> DeleteClusterResponse
+newDeleteClusterResponse'  customize = (DeleteClusterResponse <<< customize) { "Cluster": Nothing }
 
 
 
 newtype DeleteHsmRequest = DeleteHsmRequest 
   { "ClusterId" :: (ClusterId)
-  , "HsmId" :: NullOrUndefined (HsmId)
-  , "EniId" :: NullOrUndefined (EniId)
-  , "EniIp" :: NullOrUndefined (IpAddress)
+  , "HsmId" :: Maybe (HsmId)
+  , "EniId" :: Maybe (EniId)
+  , "EniIp" :: Maybe (IpAddress)
   }
 derive instance newtypeDeleteHsmRequest :: Newtype DeleteHsmRequest _
 derive instance repGenericDeleteHsmRequest :: Generic DeleteHsmRequest _
@@ -415,17 +414,17 @@ instance encodeDeleteHsmRequest :: Encode DeleteHsmRequest where encode = generi
 
 -- | Constructs DeleteHsmRequest from required parameters
 newDeleteHsmRequest :: ClusterId -> DeleteHsmRequest
-newDeleteHsmRequest _ClusterId = DeleteHsmRequest { "ClusterId": _ClusterId, "EniId": (NullOrUndefined Nothing), "EniIp": (NullOrUndefined Nothing), "HsmId": (NullOrUndefined Nothing) }
+newDeleteHsmRequest _ClusterId = DeleteHsmRequest { "ClusterId": _ClusterId, "EniId": Nothing, "EniIp": Nothing, "HsmId": Nothing }
 
 -- | Constructs DeleteHsmRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteHsmRequest' :: ClusterId -> ( { "ClusterId" :: (ClusterId) , "HsmId" :: NullOrUndefined (HsmId) , "EniId" :: NullOrUndefined (EniId) , "EniIp" :: NullOrUndefined (IpAddress) } -> {"ClusterId" :: (ClusterId) , "HsmId" :: NullOrUndefined (HsmId) , "EniId" :: NullOrUndefined (EniId) , "EniIp" :: NullOrUndefined (IpAddress) } ) -> DeleteHsmRequest
-newDeleteHsmRequest' _ClusterId customize = (DeleteHsmRequest <<< customize) { "ClusterId": _ClusterId, "EniId": (NullOrUndefined Nothing), "EniIp": (NullOrUndefined Nothing), "HsmId": (NullOrUndefined Nothing) }
+newDeleteHsmRequest' :: ClusterId -> ( { "ClusterId" :: (ClusterId) , "HsmId" :: Maybe (HsmId) , "EniId" :: Maybe (EniId) , "EniIp" :: Maybe (IpAddress) } -> {"ClusterId" :: (ClusterId) , "HsmId" :: Maybe (HsmId) , "EniId" :: Maybe (EniId) , "EniIp" :: Maybe (IpAddress) } ) -> DeleteHsmRequest
+newDeleteHsmRequest' _ClusterId customize = (DeleteHsmRequest <<< customize) { "ClusterId": _ClusterId, "EniId": Nothing, "EniIp": Nothing, "HsmId": Nothing }
 
 
 
 newtype DeleteHsmResponse = DeleteHsmResponse 
-  { "HsmId" :: NullOrUndefined (HsmId)
+  { "HsmId" :: Maybe (HsmId)
   }
 derive instance newtypeDeleteHsmResponse :: Newtype DeleteHsmResponse _
 derive instance repGenericDeleteHsmResponse :: Generic DeleteHsmResponse _
@@ -435,19 +434,19 @@ instance encodeDeleteHsmResponse :: Encode DeleteHsmResponse where encode = gene
 
 -- | Constructs DeleteHsmResponse from required parameters
 newDeleteHsmResponse :: DeleteHsmResponse
-newDeleteHsmResponse  = DeleteHsmResponse { "HsmId": (NullOrUndefined Nothing) }
+newDeleteHsmResponse  = DeleteHsmResponse { "HsmId": Nothing }
 
 -- | Constructs DeleteHsmResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteHsmResponse' :: ( { "HsmId" :: NullOrUndefined (HsmId) } -> {"HsmId" :: NullOrUndefined (HsmId) } ) -> DeleteHsmResponse
-newDeleteHsmResponse'  customize = (DeleteHsmResponse <<< customize) { "HsmId": (NullOrUndefined Nothing) }
+newDeleteHsmResponse' :: ( { "HsmId" :: Maybe (HsmId) } -> {"HsmId" :: Maybe (HsmId) } ) -> DeleteHsmResponse
+newDeleteHsmResponse'  customize = (DeleteHsmResponse <<< customize) { "HsmId": Nothing }
 
 
 
 newtype DescribeBackupsRequest = DescribeBackupsRequest 
-  { "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxSize)
-  , "Filters" :: NullOrUndefined (Filters)
+  { "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxSize)
+  , "Filters" :: Maybe (Filters)
   }
 derive instance newtypeDescribeBackupsRequest :: Newtype DescribeBackupsRequest _
 derive instance repGenericDescribeBackupsRequest :: Generic DescribeBackupsRequest _
@@ -457,18 +456,18 @@ instance encodeDescribeBackupsRequest :: Encode DescribeBackupsRequest where enc
 
 -- | Constructs DescribeBackupsRequest from required parameters
 newDescribeBackupsRequest :: DescribeBackupsRequest
-newDescribeBackupsRequest  = DescribeBackupsRequest { "Filters": (NullOrUndefined Nothing), "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeBackupsRequest  = DescribeBackupsRequest { "Filters": Nothing, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeBackupsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeBackupsRequest' :: ( { "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxSize) , "Filters" :: NullOrUndefined (Filters) } -> {"NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxSize) , "Filters" :: NullOrUndefined (Filters) } ) -> DescribeBackupsRequest
-newDescribeBackupsRequest'  customize = (DescribeBackupsRequest <<< customize) { "Filters": (NullOrUndefined Nothing), "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeBackupsRequest' :: ( { "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxSize) , "Filters" :: Maybe (Filters) } -> {"NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxSize) , "Filters" :: Maybe (Filters) } ) -> DescribeBackupsRequest
+newDescribeBackupsRequest'  customize = (DescribeBackupsRequest <<< customize) { "Filters": Nothing, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype DescribeBackupsResponse = DescribeBackupsResponse 
-  { "Backups" :: NullOrUndefined (Backups)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Backups" :: Maybe (Backups)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeBackupsResponse :: Newtype DescribeBackupsResponse _
 derive instance repGenericDescribeBackupsResponse :: Generic DescribeBackupsResponse _
@@ -478,19 +477,19 @@ instance encodeDescribeBackupsResponse :: Encode DescribeBackupsResponse where e
 
 -- | Constructs DescribeBackupsResponse from required parameters
 newDescribeBackupsResponse :: DescribeBackupsResponse
-newDescribeBackupsResponse  = DescribeBackupsResponse { "Backups": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeBackupsResponse  = DescribeBackupsResponse { "Backups": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeBackupsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeBackupsResponse' :: ( { "Backups" :: NullOrUndefined (Backups) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Backups" :: NullOrUndefined (Backups) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeBackupsResponse
-newDescribeBackupsResponse'  customize = (DescribeBackupsResponse <<< customize) { "Backups": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeBackupsResponse' :: ( { "Backups" :: Maybe (Backups) , "NextToken" :: Maybe (NextToken) } -> {"Backups" :: Maybe (Backups) , "NextToken" :: Maybe (NextToken) } ) -> DescribeBackupsResponse
+newDescribeBackupsResponse'  customize = (DescribeBackupsResponse <<< customize) { "Backups": Nothing, "NextToken": Nothing }
 
 
 
 newtype DescribeClustersRequest = DescribeClustersRequest 
-  { "Filters" :: NullOrUndefined (Filters)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxSize)
+  { "Filters" :: Maybe (Filters)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxSize)
   }
 derive instance newtypeDescribeClustersRequest :: Newtype DescribeClustersRequest _
 derive instance repGenericDescribeClustersRequest :: Generic DescribeClustersRequest _
@@ -500,18 +499,18 @@ instance encodeDescribeClustersRequest :: Encode DescribeClustersRequest where e
 
 -- | Constructs DescribeClustersRequest from required parameters
 newDescribeClustersRequest :: DescribeClustersRequest
-newDescribeClustersRequest  = DescribeClustersRequest { "Filters": (NullOrUndefined Nothing), "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeClustersRequest  = DescribeClustersRequest { "Filters": Nothing, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeClustersRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeClustersRequest' :: ( { "Filters" :: NullOrUndefined (Filters) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxSize) } -> {"Filters" :: NullOrUndefined (Filters) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxSize) } ) -> DescribeClustersRequest
-newDescribeClustersRequest'  customize = (DescribeClustersRequest <<< customize) { "Filters": (NullOrUndefined Nothing), "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeClustersRequest' :: ( { "Filters" :: Maybe (Filters) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxSize) } -> {"Filters" :: Maybe (Filters) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxSize) } ) -> DescribeClustersRequest
+newDescribeClustersRequest'  customize = (DescribeClustersRequest <<< customize) { "Filters": Nothing, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype DescribeClustersResponse = DescribeClustersResponse 
-  { "Clusters" :: NullOrUndefined (Clusters)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Clusters" :: Maybe (Clusters)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeClustersResponse :: Newtype DescribeClustersResponse _
 derive instance repGenericDescribeClustersResponse :: Generic DescribeClustersResponse _
@@ -521,12 +520,12 @@ instance encodeDescribeClustersResponse :: Encode DescribeClustersResponse where
 
 -- | Constructs DescribeClustersResponse from required parameters
 newDescribeClustersResponse :: DescribeClustersResponse
-newDescribeClustersResponse  = DescribeClustersResponse { "Clusters": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeClustersResponse  = DescribeClustersResponse { "Clusters": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeClustersResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeClustersResponse' :: ( { "Clusters" :: NullOrUndefined (Clusters) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Clusters" :: NullOrUndefined (Clusters) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeClustersResponse
-newDescribeClustersResponse'  customize = (DescribeClustersResponse <<< customize) { "Clusters": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeClustersResponse' :: ( { "Clusters" :: Maybe (Clusters) , "NextToken" :: Maybe (NextToken) } -> {"Clusters" :: Maybe (Clusters) , "NextToken" :: Maybe (NextToken) } ) -> DescribeClustersResponse
+newDescribeClustersResponse'  customize = (DescribeClustersResponse <<< customize) { "Clusters": Nothing, "NextToken": Nothing }
 
 
 
@@ -577,14 +576,14 @@ instance encodeFilters :: Encode Filters where encode = genericEncode options
 
 -- | <p>Contains information about a hardware security module (HSM) in an AWS CloudHSM cluster.</p>
 newtype Hsm = Hsm 
-  { "AvailabilityZone" :: NullOrUndefined (ExternalAz)
-  , "ClusterId" :: NullOrUndefined (ClusterId)
-  , "SubnetId" :: NullOrUndefined (SubnetId)
-  , "EniId" :: NullOrUndefined (EniId)
-  , "EniIp" :: NullOrUndefined (IpAddress)
+  { "AvailabilityZone" :: Maybe (ExternalAz)
+  , "ClusterId" :: Maybe (ClusterId)
+  , "SubnetId" :: Maybe (SubnetId)
+  , "EniId" :: Maybe (EniId)
+  , "EniIp" :: Maybe (IpAddress)
   , "HsmId" :: (HsmId)
-  , "State" :: NullOrUndefined (HsmState)
-  , "StateMessage" :: NullOrUndefined (String)
+  , "State" :: Maybe (HsmState)
+  , "StateMessage" :: Maybe (String)
   }
 derive instance newtypeHsm :: Newtype Hsm _
 derive instance repGenericHsm :: Generic Hsm _
@@ -594,12 +593,12 @@ instance encodeHsm :: Encode Hsm where encode = genericEncode options
 
 -- | Constructs Hsm from required parameters
 newHsm :: HsmId -> Hsm
-newHsm _HsmId = Hsm { "HsmId": _HsmId, "AvailabilityZone": (NullOrUndefined Nothing), "ClusterId": (NullOrUndefined Nothing), "EniId": (NullOrUndefined Nothing), "EniIp": (NullOrUndefined Nothing), "State": (NullOrUndefined Nothing), "StateMessage": (NullOrUndefined Nothing), "SubnetId": (NullOrUndefined Nothing) }
+newHsm _HsmId = Hsm { "HsmId": _HsmId, "AvailabilityZone": Nothing, "ClusterId": Nothing, "EniId": Nothing, "EniIp": Nothing, "State": Nothing, "StateMessage": Nothing, "SubnetId": Nothing }
 
 -- | Constructs Hsm's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newHsm' :: HsmId -> ( { "AvailabilityZone" :: NullOrUndefined (ExternalAz) , "ClusterId" :: NullOrUndefined (ClusterId) , "SubnetId" :: NullOrUndefined (SubnetId) , "EniId" :: NullOrUndefined (EniId) , "EniIp" :: NullOrUndefined (IpAddress) , "HsmId" :: (HsmId) , "State" :: NullOrUndefined (HsmState) , "StateMessage" :: NullOrUndefined (String) } -> {"AvailabilityZone" :: NullOrUndefined (ExternalAz) , "ClusterId" :: NullOrUndefined (ClusterId) , "SubnetId" :: NullOrUndefined (SubnetId) , "EniId" :: NullOrUndefined (EniId) , "EniIp" :: NullOrUndefined (IpAddress) , "HsmId" :: (HsmId) , "State" :: NullOrUndefined (HsmState) , "StateMessage" :: NullOrUndefined (String) } ) -> Hsm
-newHsm' _HsmId customize = (Hsm <<< customize) { "HsmId": _HsmId, "AvailabilityZone": (NullOrUndefined Nothing), "ClusterId": (NullOrUndefined Nothing), "EniId": (NullOrUndefined Nothing), "EniIp": (NullOrUndefined Nothing), "State": (NullOrUndefined Nothing), "StateMessage": (NullOrUndefined Nothing), "SubnetId": (NullOrUndefined Nothing) }
+newHsm' :: HsmId -> ( { "AvailabilityZone" :: Maybe (ExternalAz) , "ClusterId" :: Maybe (ClusterId) , "SubnetId" :: Maybe (SubnetId) , "EniId" :: Maybe (EniId) , "EniIp" :: Maybe (IpAddress) , "HsmId" :: (HsmId) , "State" :: Maybe (HsmState) , "StateMessage" :: Maybe (String) } -> {"AvailabilityZone" :: Maybe (ExternalAz) , "ClusterId" :: Maybe (ClusterId) , "SubnetId" :: Maybe (SubnetId) , "EniId" :: Maybe (EniId) , "EniIp" :: Maybe (IpAddress) , "HsmId" :: (HsmId) , "State" :: Maybe (HsmState) , "StateMessage" :: Maybe (String) } ) -> Hsm
+newHsm' _HsmId customize = (Hsm <<< customize) { "HsmId": _HsmId, "AvailabilityZone": Nothing, "ClusterId": Nothing, "EniId": Nothing, "EniIp": Nothing, "State": Nothing, "StateMessage": Nothing, "SubnetId": Nothing }
 
 
 
@@ -662,8 +661,8 @@ newInitializeClusterRequest' _ClusterId _SignedCert _TrustAnchor customize = (In
 
 
 newtype InitializeClusterResponse = InitializeClusterResponse 
-  { "State" :: NullOrUndefined (ClusterState)
-  , "StateMessage" :: NullOrUndefined (StateMessage)
+  { "State" :: Maybe (ClusterState)
+  , "StateMessage" :: Maybe (StateMessage)
   }
 derive instance newtypeInitializeClusterResponse :: Newtype InitializeClusterResponse _
 derive instance repGenericInitializeClusterResponse :: Generic InitializeClusterResponse _
@@ -673,12 +672,12 @@ instance encodeInitializeClusterResponse :: Encode InitializeClusterResponse whe
 
 -- | Constructs InitializeClusterResponse from required parameters
 newInitializeClusterResponse :: InitializeClusterResponse
-newInitializeClusterResponse  = InitializeClusterResponse { "State": (NullOrUndefined Nothing), "StateMessage": (NullOrUndefined Nothing) }
+newInitializeClusterResponse  = InitializeClusterResponse { "State": Nothing, "StateMessage": Nothing }
 
 -- | Constructs InitializeClusterResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInitializeClusterResponse' :: ( { "State" :: NullOrUndefined (ClusterState) , "StateMessage" :: NullOrUndefined (StateMessage) } -> {"State" :: NullOrUndefined (ClusterState) , "StateMessage" :: NullOrUndefined (StateMessage) } ) -> InitializeClusterResponse
-newInitializeClusterResponse'  customize = (InitializeClusterResponse <<< customize) { "State": (NullOrUndefined Nothing), "StateMessage": (NullOrUndefined Nothing) }
+newInitializeClusterResponse' :: ( { "State" :: Maybe (ClusterState) , "StateMessage" :: Maybe (StateMessage) } -> {"State" :: Maybe (ClusterState) , "StateMessage" :: Maybe (StateMessage) } ) -> InitializeClusterResponse
+newInitializeClusterResponse'  customize = (InitializeClusterResponse <<< customize) { "State": Nothing, "StateMessage": Nothing }
 
 
 
@@ -693,8 +692,8 @@ instance encodeIpAddress :: Encode IpAddress where encode = genericEncode option
 
 newtype ListTagsRequest = ListTagsRequest 
   { "ResourceId" :: (ClusterId)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxSize)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxSize)
   }
 derive instance newtypeListTagsRequest :: Newtype ListTagsRequest _
 derive instance repGenericListTagsRequest :: Generic ListTagsRequest _
@@ -704,18 +703,18 @@ instance encodeListTagsRequest :: Encode ListTagsRequest where encode = genericE
 
 -- | Constructs ListTagsRequest from required parameters
 newListTagsRequest :: ClusterId -> ListTagsRequest
-newListTagsRequest _ResourceId = ListTagsRequest { "ResourceId": _ResourceId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListTagsRequest _ResourceId = ListTagsRequest { "ResourceId": _ResourceId, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListTagsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTagsRequest' :: ClusterId -> ( { "ResourceId" :: (ClusterId) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxSize) } -> {"ResourceId" :: (ClusterId) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxSize) } ) -> ListTagsRequest
-newListTagsRequest' _ResourceId customize = (ListTagsRequest <<< customize) { "ResourceId": _ResourceId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListTagsRequest' :: ClusterId -> ( { "ResourceId" :: (ClusterId) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxSize) } -> {"ResourceId" :: (ClusterId) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxSize) } ) -> ListTagsRequest
+newListTagsRequest' _ResourceId customize = (ListTagsRequest <<< customize) { "ResourceId": _ResourceId, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListTagsResponse = ListTagsResponse 
   { "TagList" :: (TagList)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListTagsResponse :: Newtype ListTagsResponse _
 derive instance repGenericListTagsResponse :: Generic ListTagsResponse _
@@ -725,12 +724,12 @@ instance encodeListTagsResponse :: Encode ListTagsResponse where encode = generi
 
 -- | Constructs ListTagsResponse from required parameters
 newListTagsResponse :: TagList -> ListTagsResponse
-newListTagsResponse _TagList = ListTagsResponse { "TagList": _TagList, "NextToken": (NullOrUndefined Nothing) }
+newListTagsResponse _TagList = ListTagsResponse { "TagList": _TagList, "NextToken": Nothing }
 
 -- | Constructs ListTagsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTagsResponse' :: TagList -> ( { "TagList" :: (TagList) , "NextToken" :: NullOrUndefined (NextToken) } -> {"TagList" :: (TagList) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListTagsResponse
-newListTagsResponse' _TagList customize = (ListTagsResponse <<< customize) { "TagList": _TagList, "NextToken": (NullOrUndefined Nothing) }
+newListTagsResponse' :: TagList -> ( { "TagList" :: (TagList) , "NextToken" :: Maybe (NextToken) } -> {"TagList" :: (TagList) , "NextToken" :: Maybe (NextToken) } ) -> ListTagsResponse
+newListTagsResponse' _TagList customize = (ListTagsResponse <<< customize) { "TagList": _TagList, "NextToken": Nothing }
 
 
 
